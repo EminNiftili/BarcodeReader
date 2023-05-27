@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarcodeReader.Views.DocumentList">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <Button  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="DocumentAdded"/>
+                    <Button  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="DocumentSaved"/>
+                    <Button  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="DocumentCancel"/>
+                </StackLayout>
+
+                <ListView x:Name="documentList" Grid.Row="1" ItemsSource="{Binding BarcodeModels}">
+                    <ListView.Header>
+                        <Grid BackgroundColor="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="tableBarcodeColumnName"  HorizontalOptions="Fill"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                            <Label x:Name="tableCountColumnName" HorizontalOptions="Fill" Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                            <Label x:Name="tableAddedDateColumnName" HorizontalOptions="Fill" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="Black">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text ="{Binding Barcode}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                    <Label Grid.Column="1" Text ="{Binding Count}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                    <Label Grid.Column="2" Text ="{Binding AddedDate}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

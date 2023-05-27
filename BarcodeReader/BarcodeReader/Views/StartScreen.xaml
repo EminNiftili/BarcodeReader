@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarcodeReader.Views.StartScreen"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="Azure" Grid.Row="0" Orientation="Horizontal">
+                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FileAdded"/>
+                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FtpSettings"/>
+                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="LanguageSettings"/>
+                </StackLayout>
+                <ListView BackgroundColor="Aquamarine" Grid.Row="1" ItemsSource="{Binding BarcodeModels}">
+                    <ListView.Header>
+                        <Grid BackgroundColor="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="tableFileNameColumnName"  HorizontalOptions="Fill"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                            <Label x:Name="tableOperationColumnName" HorizontalOptions="Fill" Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="Black">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="3*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text ="{Binding }" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                    <StackLayout  BackgroundColor="LightBlue" Grid.Column="1" Orientation="Horizontal" Padding="10">
+                                        <ImageButton ClassId="{Binding}" x:Name="editButton" Clicked="EditButtonClicked" Source="pencil.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
+                                        <ImageButton ClassId="{Binding}" x:Name="deleteButton" Clicked="DeleteButtonClicked" Source="delete.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
+                                        <ImageButton ClassId="{Binding}" x:Name="ftpButton" Clicked="FtpButtonClicked" Source="export.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
