@@ -2,6 +2,7 @@
 using BarcodeReader.Models;
 using BarcodeReader.Services;
 using BarcodeReader.ViewModels;
+using BarcodeReader.Workers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BarcodeReader.Extensions;
 
 namespace BarcodeReader.Views
 {
@@ -111,7 +113,7 @@ namespace BarcodeReader.Views
             var fileName = ((ImageButton)sender).ClassId;
 
             var ftpCredentials = App.Current.GetFtpCredentials();
-            if (!FtpSettings.CheckFtpConnection(ftpCredentials))
+            if (FtpSettings.CheckFtpConnection(ftpCredentials))
             {
                 byte[] contentFile = null;
 
@@ -121,7 +123,7 @@ namespace BarcodeReader.Views
                 var senderFileName = fileName;
 
 
-                string action = await DisplayActionSheet("File Type", Language.DocumentList_GeneralPopUpOk, null, new string[] { "JSON", "XML" });
+                string action = await DisplayActionSheet("File Type", Language.DocumentList_GeneralPopUpOk, null, new string[] { "JSON", "XML", "EXCEL" });
                 if (action == null || action == Language.DocumentList_GeneralPopUpOk)
                 {
                     return;
@@ -155,6 +157,25 @@ namespace BarcodeReader.Views
                             }
                             File.WriteAllText(path, xml);
                             senderFileName = orginName + ".xml";
+                            contentFile = File.ReadAllBytes(path);
+                            File.Delete(path);
+                            break;
+                        }
+                    case "EXCEL":
+                        {
+                            var seperated = fileName.Split('.');
+                            var orginName = string.Empty;
+                            for (int i = 0; i < seperated.Length - 1; i++)
+                            {
+                                orginName += seperated[i];
+                            }
+
+                            var dataTable = data.ToDataTable();
+
+                            ExcelWorker excel = new ExcelWorker();
+                            var path = excel.GenerateExcel(dataTable);
+
+                            senderFileName = orginName + ".xlsx";
                             contentFile = File.ReadAllBytes(path);
                             File.Delete(path);
                             break;

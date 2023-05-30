@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace BarcodeReader.Models
 {
@@ -9,7 +10,7 @@ namespace BarcodeReader.Models
         private static int? _index = null;
         public BarcodeModel()
         {
-            if(_index is null)
+            if (_index is null)
             {
                 _index = 1;
             }
@@ -20,8 +21,14 @@ namespace BarcodeReader.Models
             Index = _index.Value;
         }
         public int Index { get; private set; }
+
+        [XmlAttribute]
         public string Barcode { get; set; }
+
+        [XmlAttribute]
         public double Count { get; set; }
+
+        [XmlAttribute]
         public DateTime AddedDate { get; set; }
     }
 }

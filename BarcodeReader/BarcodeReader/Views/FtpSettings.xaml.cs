@@ -83,10 +83,11 @@ namespace BarcodeReader.Views
 
             try
             {
-                var ftpUrl = "ftp://" + ftpCredentials.Url ?? "" + ":" + ftpCredentials.Port ?? "" + ftpCredentials.FilePath ?? "";
+                var ftpUrl = "ftp://" + ftpCredentials.Url ?? "" + ":" + ftpCredentials?.Port ?? "" + ftpCredentials?.FilePath ?? "";
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpUrl);
                 request.Method = WebRequestMethods.Ftp.ListDirectory;
                 request.Credentials = new NetworkCredential(ftpCredentials.Username ?? "", ftpCredentials.Password ?? "");
+                request.Timeout = 10000;
                 var response = request.GetResponse();
                 return true;
             }

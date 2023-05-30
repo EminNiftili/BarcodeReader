@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarcodeReader.Views.AppSecurity">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#ACF9B8">
+            <Entry Keyboard="Chat" WidthRequest="500" x:Name="entryLabel" Placeholder="PASSWORD" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Center"/>
+            <Button Clicked="Button_Clicked" Text="REGISTER" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+            <Label TextColor="red" x:Name="versionLabel" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="20"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

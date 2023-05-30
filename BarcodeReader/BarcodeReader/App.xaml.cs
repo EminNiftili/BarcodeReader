@@ -11,6 +11,12 @@ namespace BarcodeReader
 {
     public partial class App : Application
     {
+        /*
+         * version 1.0.1 = E123456hQAZWSX
+         */
+        public const string ApplicationAccessPassword = "E123456hQAZWSX";
+        public const string ApplicationVersion = "1.0.1";
+
         private NavigationPage _navigationPage;
 
         public static string InternalStoragePath;
@@ -39,7 +45,7 @@ namespace BarcodeReader
         protected override void OnStart()
         {
             LanguageSettings();
-            OpenMainPage();
+            AuthApp();
         }
 
         protected override void OnSleep()
@@ -48,6 +54,12 @@ namespace BarcodeReader
 
         protected override void OnResume()
         {
+        }
+
+
+        public void SecurityPass()
+        {
+            Preferences.Set("securityAuthPassKey", true);
         }
 
         public void LanguageSettings()
@@ -124,6 +136,19 @@ namespace BarcodeReader
             NavigationPage = new NavigationPage();
             MainPage = _navigationPage;
             NavigationPage.PushAsync(new StartScreen());
+        }
+
+        public void AuthApp()
+        {
+            bool securityPass = Preferences.Get("securityAuthPassKey", false);
+            if (securityPass)
+            {
+                OpenMainPage();
+            }
+            else
+            {
+                MainPage = new AppSecurity();
+            }
         }
     }
 }
