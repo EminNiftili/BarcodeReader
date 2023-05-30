@@ -67,17 +67,19 @@ namespace BarcodeReader.Language
             }
         }
 
+        public abstract string General_SuccesMessage { get; }
         public abstract string StartScreen_AddFile { get; }
         public abstract string StartScreen_FtpSettings { get; }
         public abstract string StartScreen_LanguageSettings { get; }
         public abstract string StartScreen_TableFilenameColumn { get; }
         public abstract string StartScreen_TableOperationColumn { get; }
         public abstract string StartScreen_DeleteFileInPopUp { get; }
+        public abstract string StartScreen_ExitApp { get; }
         public abstract string DocumentList_AddGoods { get; }
         public abstract string DocumentList_TableBarcodeColumnName { get; }
         public abstract string DocumentList_TableAddedDateColumnName { get; }
         public abstract string DocumentList_TableCountName { get; }
-        public abstract string DocumentList_FileSave { get; }
+        public abstract string General_SaveText { get; }
         public abstract string DocumentList_Cancel { get; }
         public abstract string DocumentList_FileNameInputError { get; }
         public abstract string GeneralInformationPopUpHeader { get; }
@@ -90,5 +92,11 @@ namespace BarcodeReader.Language
         public abstract string Recorder_KeepOpenPage { get; }
         public abstract string Recorder_ManualInputName { get; }
         public abstract string Recorder_ManualInputButton { get; }
+        public abstract string FtpSettings_UrlInput { get; }
+        public abstract string FtpSettings_PortInput { get; }
+        public abstract string FtpSettings_UsernameInput { get; }
+        public abstract string FtpSettings_PasswordInput { get; }
+        public abstract string FtpSettings_PathInput { get; }
+        public abstract string General_FtpConnectionError { get; }
     }
 }

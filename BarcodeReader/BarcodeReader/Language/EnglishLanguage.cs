@@ -26,7 +26,7 @@ namespace BarcodeReader.Language
 
         public override string DocumentList_TableCountName => "Count";
 
-        public override string DocumentList_FileSave => "Save";
+        public override string General_SaveText => "Save";
 
         public override string DocumentList_Cancel => "Cancel";
 
@@ -51,5 +51,21 @@ namespace BarcodeReader.Language
         public override string Recorder_ManualInputName => "Goods name";
 
         public override string Recorder_ManualInputButton => "Add";
+
+        public override string FtpSettings_UrlInput => "Url";
+
+        public override string FtpSettings_PortInput => "Port";
+
+        public override string FtpSettings_UsernameInput => "Username";
+
+        public override string FtpSettings_PasswordInput => "Password";
+
+        public override string FtpSettings_PathInput => "File path";
+
+        public override string General_FtpConnectionError => "Failed to establish ftp connection. Please check your credentials.!";
+
+        public override string General_SuccesMessage => "Success!";
+
+        public override string StartScreen_ExitApp => "Exit App";
     }
 }

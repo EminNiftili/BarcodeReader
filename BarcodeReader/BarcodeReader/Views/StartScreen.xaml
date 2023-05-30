@@ -11,9 +11,14 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <StackLayout BackgroundColor="Azure" Grid.Row="0" Orientation="Horizontal">
-                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FileAdded"/>
-                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FtpSettings"/>
-                    <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="LanguageSettings"/>
+                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
+                        <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FileAdded"/>
+                        <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="FTPSettings"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
+                        <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="LanguageSettings"/>
+                        <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="exitApp"/>
+                    </StackLayout>
                 </StackLayout>
                 <ListView BackgroundColor="Aquamarine" Grid.Row="1" ItemsSource="{Binding BarcodeModels}">
                     <ListView.Header>

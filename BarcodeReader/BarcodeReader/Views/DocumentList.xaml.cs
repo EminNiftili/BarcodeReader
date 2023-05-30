@@ -35,7 +35,7 @@ namespace BarcodeReader.Views
             this.tableBarcodeColumnName.Text = Language.DocumentList_TableBarcodeColumnName;
             this.tableCountColumnName.Text = Language.DocumentList_TableCountName;
             this.DocumentCancel.Text = Language.DocumentList_Cancel;
-            this.DocumentSaved.Text = Language.DocumentList_FileSave;
+            this.DocumentSaved.Text = Language.General_SaveText;
         }
 
         public void ComponentGenerator()
@@ -76,7 +76,7 @@ namespace BarcodeReader.Views
         private async void DocumentSavedClicked(object sender, EventArgs e)
         {
             string result = null;
-            if(viewModel.FileName == null)
+            if (viewModel.FileName == null)
             {
                 result = await DisplayPromptAsync(Language.GeneralInformationPopUpHeader,
                      Language.DocumentList_FileSavePopUpMessage,
@@ -91,7 +91,11 @@ namespace BarcodeReader.Views
             {
                 result = viewModel.FileName;
             }
-            
+
+            if (result is null)
+            {
+                return;
+            }
             var canAddedFile = DocumentListViewModel.Instance.SaveFile(result);
             if (!canAddedFile)
             {

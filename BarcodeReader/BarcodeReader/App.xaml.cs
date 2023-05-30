@@ -1,5 +1,7 @@
 ﻿using BarcodeReader.Language;
+using BarcodeReader.Models;
 using BarcodeReader.Views;
+using Newtonsoft.Json;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -71,6 +73,52 @@ namespace BarcodeReader
             Preferences.Set("lang", ((int)languages).ToString());
             Language = languages;
         }
+
+        public void SaveFtpCredentials(FtpCredentialsModel ftpCredentials)
+        {
+            if (ftpCredentials is null 
+                //||
+                //ftpCredentials.Url is null ||
+                //ftpCredentials.Username is null ||
+                //ftpCredentials.Password is null ||
+                //ftpCredentials.Port is null ||
+                //ftpCredentials.FilePath is null
+                )
+            {
+                return;
+            }
+
+            var data = JsonConvert.SerializeObject(ftpCredentials);
+
+            if (Preferences.ContainsKey("ftp"))
+            {
+                Preferences.Remove("ftp");
+            }
+            Preferences.Set("ftp", data);
+
+        }
+
+        public FtpCredentialsModel GetFtpCredentials()
+        {
+            try
+            {
+                string ftpCodeAsObject = Preferences.Get("ftp", null);
+                if (ftpCodeAsObject != null)
+                {
+                    var ftpData = JsonConvert.DeserializeObject<FtpCredentialsModel>(ftpCodeAsObject);
+                    return ftpData;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
         public void OpenMainPage()
         {
             NavigationPage = new NavigationPage();

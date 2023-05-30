@@ -24,7 +24,7 @@ namespace BarcodeReader.Language
 
         public override string DocumentList_TableAddedDateColumnName => "Əlavə edildiyi tarix";
 
-        public override string DocumentList_FileSave => "Yadda saxla";
+        public override string General_SaveText => "Yadda saxla";
 
         public override string DocumentList_Cancel => "Ləğv et";
 
@@ -51,5 +51,21 @@ namespace BarcodeReader.Language
         public override string Recorder_ManualInputName => "Malın barkodu:";
 
         public override string Recorder_ManualInputButton => "Əlavə et";
+
+        public override string FtpSettings_UrlInput => "Ftp adresi";
+
+        public override string FtpSettings_PortInput => "Ftp portu";
+
+        public override string FtpSettings_UsernameInput => "İstifadəçi adı";
+
+        public override string FtpSettings_PasswordInput => "Şifrə";
+
+        public override string FtpSettings_PathInput => "Qovluğun adresi";
+
+        public override string General_FtpConnectionError => "Ftp bağlantısı qurmaq mümkün olmadı. Zəhmət olmasa bağlantınızı yoxlayın!";
+
+        public override string General_SuccesMessage => "Uğurlu əməliyyat!";
+
+        public override string StartScreen_ExitApp => "Çıxış";
     }
 }
