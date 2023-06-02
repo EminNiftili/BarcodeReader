@@ -70,7 +70,7 @@ namespace BarcodeReader.Views
                 return;
             }
 
-            DocumentListViewModel.Instance.ChangeCount(selectedItem.Index, double.Parse(result));
+            DocumentListViewModel.Instance.ChangeCount(selectedItem.Barcode, double.Parse(result));
             documentList.SelectedItem = null;
         }
 

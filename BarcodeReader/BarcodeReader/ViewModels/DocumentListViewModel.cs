@@ -96,7 +96,7 @@ namespace BarcodeReader.ViewModels
             DependencyService.Get<IAudioService>().PlayAudioFile("scannerSound.mp4");
         }
 
-        public void ChangeCount(int index, double count)
+        public void ChangeCount(string barcode, double count)
         {
 
             if(count < 0)
@@ -105,11 +105,11 @@ namespace BarcodeReader.ViewModels
             }
             else if(count == 0)
             {
-                _barcodeModels = new ObservableCollection<BarcodeModel>(_barcodeModels.Where(x => x.Index != index).ToList());
+                _barcodeModels = new ObservableCollection<BarcodeModel>(_barcodeModels.Where(x => x.Barcode != barcode).ToList());
             }
             else
             {
-                var existBarcode = _barcodeModels.FirstOrDefault(x => x.Index == index);
+                var existBarcode = _barcodeModels.FirstOrDefault(x => x.Barcode == barcode);
 
                 if (existBarcode != null)
                 {

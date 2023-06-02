@@ -7,20 +7,9 @@ namespace BarcodeReader.Models
 {
     public class BarcodeModel
     {
-        private static int? _index = null;
         public BarcodeModel()
         {
-            if (_index is null)
-            {
-                _index = 1;
-            }
-            else
-            {
-                _index++;
-            }
-            Index = _index.Value;
         }
-        public int Index { get; private set; }
 
         [XmlAttribute]
         public string Barcode { get; set; }

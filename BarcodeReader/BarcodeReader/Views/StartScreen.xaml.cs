@@ -90,7 +90,7 @@ namespace BarcodeReader.Views
             DocumentList documentList = new DocumentList();
 
             documentList.viewModel.BarcodeModels = new ObservableCollection<BarcodeModel>(data);
-            documentList.viewModel.SetFileName(fileName, true);
+            documentList.viewModel.SetFileName(fileName, false);
 
             App.Current.NavigationPage = new NavigationPage(documentList);
         }

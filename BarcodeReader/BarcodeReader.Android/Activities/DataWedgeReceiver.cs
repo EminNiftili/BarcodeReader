@@ -17,14 +17,6 @@ namespace BarcodeReader.Droid.Activities
     {
         //com.barcode.sendBroadcast
 
-        // This intent string contains the source of the data as a string
-        private static string SOURCE_TAG = "com.barcode.datawedge.source";
-        // This intent string contains the barcode symbology as a string
-        private static string LABEL_TYPE_TAG = "com.barcode.datawedge.label_type";
-        // This intent string contains the captured data as a string
-        // (in the case of MSR this data string contains a concatenation of the track data)
-        private static string DATA_STRING_TAG = "com.barcode.datawedge.data_string";
-        // Intent Action for our operation
         public static string IntentAction = "com.barcode.sendBroadcast";
         public static string IntentCategory = "android.intent.category.DEFAULT";
 
