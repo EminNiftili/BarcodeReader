@@ -13,9 +13,10 @@ namespace BarcodeReader
     {
         /*
          * version 1.0.1 = E123456hQAZWSX
+         * version 1.0.2 = E123456hQAZWSX
          */
         public const string ApplicationAccessPassword = "E123456hQAZWSX";
-        public const string ApplicationVersion = "1.0.1";
+        public const string ApplicationVersion = "1.0.2";
 
         private NavigationPage _navigationPage;
 

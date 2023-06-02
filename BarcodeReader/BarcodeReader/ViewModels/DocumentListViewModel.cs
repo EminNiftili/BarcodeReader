@@ -1,4 +1,5 @@
-﻿using BarcodeReader.Models;
+﻿using BarcodeReader.Configration;
+using BarcodeReader.Models;
 using BarcodeReader.Services;
 using Newtonsoft.Json;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace BarcodeReader.ViewModels
@@ -37,6 +39,22 @@ namespace BarcodeReader.ViewModels
         public DocumentListViewModel()
         {
             Instance = this;
+
+            var scanner = DependencyService.Get<IScanner>();
+
+            scanner.Enable();
+            scanner.OnScanDataCollected += Scanner_OnScanDataCollected;
+
+            var config = new ZebraScannerConfig();
+            config.IsUPCE0 = false;
+            config.IsUPCE1 = false;
+
+            scanner.SetConfig(config);
+        }
+
+        private void Scanner_OnScanDataCollected(object sender, StatusEventArgs e)
+        {
+            this.AddBarcodeModel(e.Data);
         }
 
         private ObservableCollection<BarcodeModel> _barcodeModels = new ObservableCollection<BarcodeModel>();
