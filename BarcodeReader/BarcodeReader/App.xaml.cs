@@ -12,11 +12,17 @@ namespace BarcodeReader
     public partial class App : Application
     {
         /*
-         * version 1.0.1 = E123456hQAZWSX
-         * version 1.0.2 = E123456hQAZWSX
+         * version 1.0.1 = E123456hQAZWSX   Date : 31 may 2023   04:00
+         * App created
+         * 
+         * version 1.0.2 = E123456hQAZWSX   Date : 1 June 2023   23:50
+         * Scanner Reader Added
+         * 
+         * version 1.1.1 = QAZWSXEH123456   Date : 2 June 2023   1:30
+         * Some View Component Changed. Optimized Codes. Functionality Changed
          */
-        public const string ApplicationAccessPassword = "E123456hQAZWSX";
-        public const string ApplicationVersion = "1.0.2";
+        public const string ApplicationAccessPassword = "QAZWSXEH123456";
+        public const string ApplicationVersion = "1.1.1";
 
         public const string DocumentDefaultName = "Invoice";
 
