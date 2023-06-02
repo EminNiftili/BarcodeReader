@@ -16,6 +16,8 @@ namespace BarcodeReader.ViewModels
 {
     public class DocumentListViewModel : BaseViewModel
     {
+        public event EventHandler BarcodeListChanged;
+
         private string _fileName;
         public string FileName
         {
@@ -39,7 +41,7 @@ namespace BarcodeReader.ViewModels
 
         public static DocumentListViewModel Instance { get; private set; }
 
-        public DocumentListViewModel()
+        public DocumentListViewModel()   
         {
             Instance = this;
 
@@ -94,6 +96,8 @@ namespace BarcodeReader.ViewModels
             _barcodeModels = new ObservableCollection<BarcodeModel>(_barcodeModels.ToList()); 
             PropertyChange(nameof(BarcodeModels));
             DependencyService.Get<IAudioService>().PlayAudioFile("scannerSound.mp4");
+
+            BarcodeListChanged?.Invoke(barcode, new EventArgs());
         }
 
         public void ChangeCount(string barcode, double count)
@@ -120,6 +124,8 @@ namespace BarcodeReader.ViewModels
             _barcodeModels = new ObservableCollection<BarcodeModel>(_barcodeModels.ToList());
             PropertyChange(nameof(BarcodeModels));
             DependencyService.Get<IAudioService>().PlayAudioFile("scannerSound.mp4");
+
+            BarcodeListChanged?.Invoke(barcode, new EventArgs());
         }
 
         public bool SaveFile(string result)

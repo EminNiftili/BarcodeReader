@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace BarcodeReader.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DocumentList : ContentPage
     {
+        private ViewCell previousContent;
 
         LanguageModel Language = LanguageModel.GenerateLanguage(App.Language);
 
@@ -46,6 +48,24 @@ namespace BarcodeReader.Views
             this.DocumentCancel.Clicked += DocumentCancelClicked;
             this.DocumentSaved.Clicked += DocumentSavedClicked;
             this.documentList.ItemSelected += DocumentListItemSelected;
+            this.viewModel.BarcodeListChanged += BarcodeListChanged;
+        }
+
+        private void BarcodeListChanged(object sender, EventArgs e)
+        {
+            var viewCells = documentList.GetAllViewCells();
+
+            if(previousContent != null)
+            {
+                previousContent.ChangeBackGroundColorForDocumentView(Color.LightBlue);
+            }
+
+            var cell = (ViewCell)viewCells.FirstOrDefault(x => ((ViewCell)x).GetBarcodeForDocumentView() == (string)sender);
+
+            cell.ChangeBackGroundColorForDocumentView(Color.FromRgb(230, 220, 30));
+
+            previousContent = cell;
+
         }
 
         private async void DocumentListItemSelected(object sender, SelectedItemChangedEventArgs e)
