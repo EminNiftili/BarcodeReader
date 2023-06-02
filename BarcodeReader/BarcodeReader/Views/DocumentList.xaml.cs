@@ -1,4 +1,5 @@
-﻿using BarcodeReader.Language;
+﻿using BarcodeReader.Extensions;
+using BarcodeReader.Language;
 using BarcodeReader.Models;
 using BarcodeReader.ViewModels;
 using System;
@@ -78,14 +79,16 @@ namespace BarcodeReader.Views
             string result = null;
             if (viewModel.FileName == null)
             {
-                result = await DisplayPromptAsync(Language.GeneralInformationPopUpHeader,
-                     Language.DocumentList_FileSavePopUpMessage,
-                     accept: Language.GeneralPopUpConfirm,
-                     cancel: Language.GeneralPopUpCancel);
-                if (result is null)
-                {
-                    return;
-                }
+                //result = await DisplayPromptAsync(Language.GeneralInformationPopUpHeader,
+                //     Language.DocumentList_FileSavePopUpMessage,
+                //     accept: Language.GeneralPopUpConfirm,
+                //     cancel: Language.GeneralPopUpCancel);
+                //if (result is null)
+                //{
+                //    return;
+                //}
+
+                result = App.DocumentDefaultName + "-" + DateTime.Now.GetUniqueFormat();
             }
             else
             {
@@ -105,7 +108,7 @@ namespace BarcodeReader.Views
             }
             else
             {
-                App.Current.OpenMainPage();
+                viewModel.SetFileName(result);
             }
         }
 

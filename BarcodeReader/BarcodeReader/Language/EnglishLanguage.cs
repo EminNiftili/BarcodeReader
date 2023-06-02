@@ -28,7 +28,7 @@ namespace BarcodeReader.Language
 
         public override string General_SaveText => "Save";
 
-        public override string DocumentList_Cancel => "Cancel";
+        public override string DocumentList_Cancel => "Previous";
 
         public override string DocumentList_FileNameInputError => "The filename can only contain letters";
 
@@ -40,7 +40,7 @@ namespace BarcodeReader.Language
 
         public override string GeneralPopUpCancel => "Cancel";
 
-        public override string DocumentList_CancelPopUpMessage => "Data will not be saved!";
+        public override string DocumentList_CancelPopUpMessage => "Make sure to save the file. Otherwise data loss may occur!";
 
         public override string DocumentList_FileSavePopUpMessage => "You must specify a file name to save the file!";
 

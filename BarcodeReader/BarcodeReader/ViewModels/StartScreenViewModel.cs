@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarcodeReader.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -32,7 +33,7 @@ namespace BarcodeReader.ViewModels
         public void LoadList()
         {
             var files = Directory.GetFiles(App.InternalStoragePath).ToList();
-            files = files.Select(x => x.Split('/').Last()).ToList();
+            files = files.Select(x => x.Split('/').Last().RemoveDestinationInFilename()).ToList();
             BarcodeModels = new ObservableCollection<string>(files.ToList());
         }
     }

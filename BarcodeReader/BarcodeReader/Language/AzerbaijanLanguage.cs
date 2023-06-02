@@ -26,7 +26,7 @@ namespace BarcodeReader.Language
 
         public override string General_SaveText => "Yadda saxla";
 
-        public override string DocumentList_Cancel => "Ləğv et";
+        public override string DocumentList_Cancel => "Geri qayıt";
 
         public override string DocumentList_FileNameInputError => "Faylın adı yalnız hərflərdən ibarət ola bilər";
 
@@ -34,7 +34,7 @@ namespace BarcodeReader.Language
 
         public override string GeneralInformationPopUpHeader => "Məlumat";
 
-        public override string DocumentList_CancelPopUpMessage => "Heç bir məlumat yadda saxlanılmayacaq!";
+        public override string DocumentList_CancelPopUpMessage => "Faylı yadda saxladığınızdan əmin olun. Əks halda məlumat itkisi baş verə bilər!";
 
         public override string GeneralPopUpConfirm => "Təsdiq";
 

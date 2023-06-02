@@ -28,7 +28,7 @@ namespace BarcodeReader.Language
 
         public override string General_SaveText => "Kaydet";
 
-        public override string DocumentList_Cancel => "İptal et";
+        public override string DocumentList_Cancel => "Geri dön";
 
         public override string DocumentList_FileNameInputError => "Dosya adı yalnız harflardan oluşmalıdır!";
 
@@ -40,7 +40,7 @@ namespace BarcodeReader.Language
 
         public override string GeneralPopUpCancel => "İptal";
 
-        public override string DocumentList_CancelPopUpMessage => "Veriler kaydedilmeyecek!";
+        public override string DocumentList_CancelPopUpMessage => "Dosyayı kaydettiğinizden emin olun. Aksi takdirde veri kaybı meydana gelebilir!";
 
         public override string DocumentList_FileSavePopUpMessage => "Dosyayı kaydetmek için dosya adı yazmanız gerekir!";
 

@@ -84,13 +84,13 @@ namespace BarcodeReader.Views
         private void EditButtonClicked(object sender, EventArgs e)
         {
             var fileName = ((ImageButton)sender).ClassId;
-            var json = File.ReadAllText(Path.Combine(App.InternalStoragePath, fileName));
+            var json = File.ReadAllText(Path.Combine(App.InternalStoragePath, fileName + ".json"));
             var data = JsonConvert.DeserializeObject<List<BarcodeModel>>(json);
 
             DocumentList documentList = new DocumentList();
 
             documentList.viewModel.BarcodeModels = new ObservableCollection<BarcodeModel>(data);
-            documentList.viewModel.FileName = fileName;
+            documentList.viewModel.SetFileName(fileName, true);
 
             App.Current.NavigationPage = new NavigationPage(documentList);
         }
@@ -103,7 +103,7 @@ namespace BarcodeReader.Views
                 Language.GeneralPopUpConfirm, Language.GeneralPopUpCancel);
             if (answer)
             {
-                File.Delete(Path.Combine(App.InternalStoragePath, fileName));
+                File.Delete(Path.Combine(App.InternalStoragePath, fileName + ".json"));
                 App.Current.OpenMainPage();
             }
         }
@@ -111,6 +111,8 @@ namespace BarcodeReader.Views
         private async void FtpButtonClicked(object sender, EventArgs e)
         {
             var fileName = ((ImageButton)sender).ClassId;
+
+            fileName = fileName + ".json";
 
             var ftpCredentials = App.Current.GetFtpCredentials();
             if (FtpSettings.CheckFtpConnection(ftpCredentials))

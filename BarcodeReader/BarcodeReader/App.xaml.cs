@@ -18,6 +18,8 @@ namespace BarcodeReader
         public const string ApplicationAccessPassword = "E123456hQAZWSX";
         public const string ApplicationVersion = "1.0.2";
 
+        public const string DocumentDefaultName = "Invoice";
+
         private NavigationPage _navigationPage;
 
         public static string InternalStoragePath;

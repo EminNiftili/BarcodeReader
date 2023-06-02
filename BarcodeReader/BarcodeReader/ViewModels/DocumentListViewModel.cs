@@ -1,4 +1,5 @@
 ﻿using BarcodeReader.Configration;
+using BarcodeReader.Extensions;
 using BarcodeReader.Models;
 using BarcodeReader.Services;
 using Newtonsoft.Json;
@@ -22,15 +23,17 @@ namespace BarcodeReader.ViewModels
             {
                 return _fileName;
             }
-            set
+        }
+
+        public void SetFileName(string filename, bool withExtensions = false)
+        {
+            if (withExtensions)
             {
-                var seperated = value.Split('.');
-                var fileName = "";
-                for (int i = 0; i < seperated.Length - 1; i++ )
-                {
-                    fileName += seperated[i];
-                }
-                _fileName = fileName;
+                _fileName = filename.RemoveDestinationInFilename();
+            }
+            else
+            {
+                _fileName = filename;
             }
         }
 
