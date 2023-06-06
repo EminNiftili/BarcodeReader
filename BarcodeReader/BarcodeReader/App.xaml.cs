@@ -20,9 +20,15 @@ namespace BarcodeReader
          * 
          * version 1.1.1 = QAZWSXEH123456   Date : 2 June 2023   1:30
          * Some View Component Changed. Optimized Codes. Functionality Changed
+         * 
+         * 
+         * version 1.2.1 = QAZWSXEH1234567  Date : 6 June 2023   2:26
+         * Filname created return old version. Scroll Animation Added. 
+         * File Save in nternal Storage Added. All Language Disabled!
+         * 
          */
-        public const string ApplicationAccessPassword = "QAZWSXEH123456";
-        public const string ApplicationVersion = "1.1.1";
+        public const string ApplicationAccessPassword = "QAZWSXEH1234567";
+        public const string ApplicationVersion = "1.2.1";
 
         public const string DocumentDefaultName = "Invoice";
 
