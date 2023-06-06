@@ -64,6 +64,10 @@ namespace BarcodeReader.Views
 
             cell.ChangeBackGroundColorForDocumentView(Color.FromRgb(230, 220, 30));
 
+            var itemObject =viewModel.BarcodeModels.FirstOrDefault(x => x.Barcode == (string)sender);
+
+            documentList.ScrollTo(itemObject, ScrollToPosition.Center, true);
+
             previousContent = cell;
 
         }
