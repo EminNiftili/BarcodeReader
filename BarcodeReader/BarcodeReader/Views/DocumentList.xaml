@@ -20,12 +20,14 @@
                     <Grid BackgroundColor="Black">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="9*" />
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="tableBarcodeColumnName"  HorizontalOptions="Fill"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                        <Label x:Name="tableCountColumnName" HorizontalOptions="Fill" Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
-                        <Label x:Name="tableAddedDateColumnName" HorizontalOptions="Fill" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label x:Name="tableInedxColumnName"  HorizontalOptions="Fill"  Grid.Column="0" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label x:Name="tableBarcodeColumnName"  HorizontalOptions="Fill"  Grid.Column="1" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label x:Name="tableCountColumnName" HorizontalOptions="Fill" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
+                        <Label x:Name="tableAddedDateColumnName" HorizontalOptions="Fill" Grid.Column="3" FontSize="Medium" FontAttributes="Bold" BackgroundColor="MediumBlue" TextColor="White" HorizontalTextAlignment="Center" Margin="1"/>
                     </Grid>
                 </ListView.Header>
 
@@ -35,12 +37,14 @@
                             <Grid BackgroundColor="Black">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="9*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text ="{Binding Barcode}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
-                                <Label Grid.Column="1" Text ="{Binding Count}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
-                                <Label Grid.Column="2" Text ="{Binding AddedDate}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                <Label Grid.Column="0" Text ="{Binding Index}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                <Label Grid.Column="1" Text ="{Binding Barcode}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                <Label Grid.Column="2" Text ="{Binding Count}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
+                                <Label Grid.Column="3" Text ="{Binding AddedDate}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" BackgroundColor="LightBlue" Margin="1"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

@@ -44,6 +44,7 @@
                                     <StackLayout  BackgroundColor="LightBlue" Grid.Column="1" Orientation="Horizontal" Padding="10">
                                         <ImageButton ClassId="{Binding}" x:Name="editButton" Clicked="EditButtonClicked" Source="pencil.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
                                         <ImageButton ClassId="{Binding}" x:Name="deleteButton" Clicked="DeleteButtonClicked" Source="delete.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
+                                        <ImageButton ClassId="{Binding}" x:Name="downloadFile" Clicked="DownloadFileClicked" Source="save.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
                                         <ImageButton ClassId="{Binding}" x:Name="ftpButton" Clicked="FtpButtonClicked" Source="export.png" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
                                     </StackLayout>
                                 </Grid>

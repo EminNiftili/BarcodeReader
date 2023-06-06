@@ -90,6 +90,11 @@ namespace BarcodeReader.Views
             DocumentList documentList = new DocumentList();
 
             documentList.viewModel.BarcodeModels = new ObservableCollection<BarcodeModel>(data);
+            if(data != null && data.Count != 0)
+            {
+                documentList.viewModel.indexerFlag = data.Select(x => x.Index).Max();
+            }
+
             documentList.viewModel.SetFileName(fileName, false);
 
             App.Current.NavigationPage = new NavigationPage(documentList);
@@ -210,6 +215,105 @@ namespace BarcodeReader.Views
                     Language.General_FtpConnectionError,
                     Language.DocumentList_GeneralPopUpOk);
             }
+        }
+
+        private async void DownloadFileClicked(object sender, EventArgs e)
+        {
+            var fileName = ((ImageButton)sender).ClassId;
+
+            fileName = fileName + ".json";
+
+            byte[] contentFile = null;
+
+            var url = Path.Combine(App.InternalStoragePath, fileName);
+            var json = File.ReadAllText(Path.Combine(App.InternalStoragePath, fileName));
+            var data = JsonConvert.DeserializeObject<List<BarcodeModel>>(json);
+            var senderFileName = fileName;
+
+
+            string action = await DisplayActionSheet("File Type", Language.DocumentList_GeneralPopUpOk, null, new string[] { "JSON", "XML", "EXCEL" });
+            if (action == null || action == Language.DocumentList_GeneralPopUpOk)
+            {
+                return;
+            }
+
+            switch (action)
+            {
+                case "JSON":
+                    {
+                        contentFile = File.ReadAllBytes(url);
+                        break;
+                    }
+                case "XML":
+                    {
+                        var writer = new StringWriter();
+                        var serializer = new XmlSerializer(typeof(List<BarcodeModel>));
+                        serializer.Serialize(writer, data);
+                        string xml = writer.ToString();
+
+                        var seperated = fileName.Split('.');
+                        var orginName = string.Empty;
+                        for (int i = 0; i < seperated.Length - 1; i++)
+                        {
+                            orginName += seperated[i];
+                        }
+
+                        var path = Path.Combine(App.InternalStoragePath, "dataExportedAsXml" + ".xml");
+                        if (!File.Exists(path))
+                        {
+                            File.Create(path).Close();
+                        }
+                        File.WriteAllText(path, xml);
+                        senderFileName = orginName + ".xml";
+                        contentFile = File.ReadAllBytes(path);
+                        File.Delete(path);
+                        break;
+                    }
+                case "EXCEL":
+                    {
+                        var seperated = fileName.Split('.');
+                        var orginName = string.Empty;
+                        for (int i = 0; i < seperated.Length - 1; i++)
+                        {
+                            orginName += seperated[i];
+                        }
+
+                        var dataTable = data.ToDataTable();
+
+                        ExcelWorker excel = new ExcelWorker();
+                        var path = excel.GenerateExcel(dataTable);
+
+                        senderFileName = orginName + ".xlsx";
+                        contentFile = File.ReadAllBytes(path);
+                        File.Delete(path);
+                        break;
+                    }
+                default:
+                    {
+                        await DisplayAlert(Language.GeneralInformationPopUpHeader,
+                            Language.General_FtpConnectionError,
+                            Language.DocumentList_GeneralPopUpOk);
+                        break;
+                    }
+            }
+
+            try
+            {
+                if (!Directory.Exists(App.AppPublicFileDirectory))
+                {
+                    Directory.CreateDirectory(App.AppPublicFileDirectory);
+                }
+                string fileUrl = Path.Combine(App.AppPublicFileDirectory, senderFileName);
+                File.WriteAllBytes(fileUrl, contentFile);
+            }
+            catch(Exception ex)
+            {
+                await DisplayAlert(Language.GeneralInformationPopUpHeader,
+                      Language.General_FileNameInputError,
+                      Language.DocumentList_GeneralPopUpOk);
+
+            }
+
         }
     }
 }

@@ -28,7 +28,7 @@ namespace BarcodeReader.Language
 
         public override string DocumentList_Cancel => "Geri qayıt";
 
-        public override string DocumentList_FileNameInputError => "Faylın adı yalnız hərflərdən ibarət ola bilər";
+        public override string General_FileNameInputError => "Faylın adı yalnız hərflərdən ibarət ola bilər";
 
         public override string DocumentList_TableCountName => "Say";
 

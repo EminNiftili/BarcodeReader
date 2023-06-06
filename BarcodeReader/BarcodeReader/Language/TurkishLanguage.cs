@@ -30,7 +30,7 @@ namespace BarcodeReader.Language
 
         public override string DocumentList_Cancel => "Geri dön";
 
-        public override string DocumentList_FileNameInputError => "Dosya adı yalnız harflardan oluşmalıdır!";
+        public override string General_FileNameInputError => "Dosya adı yalnız harflardan oluşmalıdır!";
 
         public override string GeneralInformationPopUpHeader => "Bilgi";
 

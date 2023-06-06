@@ -16,6 +16,8 @@ namespace BarcodeReader.ViewModels
 {
     public class DocumentListViewModel : BaseViewModel
     {
+        public int indexerFlag = 0;
+
         public event EventHandler BarcodeListChanged;
 
         private string _fileName;
@@ -84,6 +86,7 @@ namespace BarcodeReader.ViewModels
             {
                 _barcodeModels.Add(new BarcodeModel
                 {
+                    Index = ++indexerFlag,
                     Barcode = barcode,
                     Count = 1,
                     AddedDate = DateTime.Now

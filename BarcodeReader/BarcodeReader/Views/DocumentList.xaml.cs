@@ -123,7 +123,7 @@ namespace BarcodeReader.Views
             if (!canAddedFile)
             {
                 await DisplayAlert(Language.GeneralInformationPopUpHeader,
-                    Language.DocumentList_FileNameInputError,
+                    Language.General_FileNameInputError,
                     Language.DocumentList_GeneralPopUpOk);
             }
             else

@@ -10,7 +10,7 @@ namespace BarcodeReader.Extensions
         public static string GetBarcodeForDocumentView(this ViewCell cell)
         {
             var grid = (Grid)cell.View;
-            var label = (Label)grid.Children[0];
+            var label = (Label)grid.Children[1];
             return label.Text;
         }
 
@@ -20,9 +20,11 @@ namespace BarcodeReader.Extensions
             var label1 = (Label)grid.Children[0];
             var label2 = (Label)grid.Children[1];
             var label3 = (Label)grid.Children[2];
+            var label4 = (Label)grid.Children[3];
             label1.BackgroundColor = color;
             label2.BackgroundColor = color;
             label3.BackgroundColor = color;
+            label4.BackgroundColor = color;
         }
     }
 }

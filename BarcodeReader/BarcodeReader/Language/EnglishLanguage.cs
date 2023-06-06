@@ -30,7 +30,7 @@ namespace BarcodeReader.Language
 
         public override string DocumentList_Cancel => "Previous";
 
-        public override string DocumentList_FileNameInputError => "The filename can only contain letters";
+        public override string General_FileNameInputError => "The filename can only contain letters";
 
         public override string GeneralInformationPopUpHeader => "Information";
 

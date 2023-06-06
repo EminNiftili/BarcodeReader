@@ -12,6 +12,9 @@ namespace BarcodeReader.Models
         }
 
         [XmlAttribute]
+        public int Index { get; set; }
+
+        [XmlAttribute]
         public string Barcode { get; set; }
 
         [XmlAttribute]

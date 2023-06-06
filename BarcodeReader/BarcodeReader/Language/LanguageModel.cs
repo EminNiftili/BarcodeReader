@@ -37,9 +37,9 @@ namespace BarcodeReader.Language
         {
             return new string[]
             {
-                "English",
+                //"English",
                 "Azərbaycanca",
-                "Türkçe"
+                //"Türkçe"
             };
         }
         public static Languages StringToLanguage(string language)
@@ -81,7 +81,7 @@ namespace BarcodeReader.Language
         public abstract string DocumentList_TableCountName { get; }
         public abstract string General_SaveText { get; }
         public abstract string DocumentList_Cancel { get; }
-        public abstract string DocumentList_FileNameInputError { get; }
+        public abstract string General_FileNameInputError { get; }
         public abstract string GeneralInformationPopUpHeader { get; }
         public abstract string DocumentList_GeneralPopUpOk { get; }
         public abstract string GeneralPopUpConfirm { get; }

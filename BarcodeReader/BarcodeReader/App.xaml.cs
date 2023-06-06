@@ -26,6 +26,8 @@ namespace BarcodeReader
 
         public const string DocumentDefaultName = "Invoice";
 
+        public const string AppPublicFileDirectory = "storage/emulated/0/BarcodeReader/";
+
         private NavigationPage _navigationPage;
 
         public static string InternalStoragePath;
